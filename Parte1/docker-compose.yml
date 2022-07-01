@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web-app:
+    build: .
+    container_name: 'sw_api_f4'
+    command: sh -c 'npm install; npm start'
+    ports:
+      - '3000:3000'
+    volumes:
+      - /home/nahuel/Escritorio/Parte 2/Parte1/api:/api
+
+    depends_on:
+      - "db-redis"
+
+  db-redis:
+    container_name: 'db_sw_api_f4'
+    image: redis
+    ports:
+      - "6379:6379"
